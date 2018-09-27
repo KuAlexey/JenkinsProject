@@ -23,6 +23,11 @@ test {
     }
 }
 
+
+/*
+appengine {
+    jvmFlags = ['-Dlocal=$local', '-Dremote=$remote']
+
 buildscript {
     repositories {
         jcenter()
@@ -42,8 +47,4 @@ allure {
     aspectjweaver = true
     allureJavaVersion = LATEST_VERSION
 }
-
-/*
-appengine {
-    jvmFlags = ['-Dlocal=$local', '-Dremote=$remote']
 }*/
