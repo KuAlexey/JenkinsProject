@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'JenkinsProject'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+    testCompile group: 'ru.yandex.qatools.htmlelements', name: 'htmlelements-java', version: '1.19'
+}
+test {
+    useTestNG() {
+        suites 'src/test/resources/testing.xml'
+    }
+}
