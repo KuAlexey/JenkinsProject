@@ -13,11 +13,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FunctionalTest {
-    private static WebDriver driver;
+    private static RemoteWebDriver driver;
     private final static String APP_URL = "https://yositesting2.combotag.com/";
     private final static String HUB_URL = "http://172.22.0.2:4444/wd/hub";
 
-    public static WebDriver getDriver() {
+    public static RemoteWebDriver getDriver() {
         return driver;
     }
 
@@ -27,8 +27,6 @@ public class FunctionalTest {
      //   System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
       //    WebDriverManager.chromedriver().setup();
         driver = new RemoteWebDriver(new URL(HUB_URL), new ChromeOptions());
-        driver = new ChromeDriver();
-
         driver.get(APP_URL);
         driver.manage().window().setSize(new Dimension(1920, 1080));
       //  driver.manage().window().maximize();
