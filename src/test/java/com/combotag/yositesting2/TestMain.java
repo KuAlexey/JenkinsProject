@@ -3,10 +3,10 @@ package com.combotag.yositesting2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestMain extends FunctionalTest{
-    public class TestSiteMain extends FunctionalTest {
+public class TestMain extends BaseTest {
+    public class TestSiteMain extends BaseTest {
 
-        @Test
+        @Test(description = "Main test")
         public void mainTest() {
             LoginPage loginPage = new LoginPage();
 
