@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-
-<suite name="suite1">
-    <test name="mainTest">
-        <classes>
-            <class name="com.combotag.yositesting2.TestMain"/>
-        </classes>
-    </test>
-</suite>
