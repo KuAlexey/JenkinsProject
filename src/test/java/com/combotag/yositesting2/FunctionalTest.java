@@ -15,8 +15,7 @@ import java.net.URL;
 public class FunctionalTest {
     private static WebDriver driver;
     private final static String APP_URL = "https://yositesting2.combotag.com/";
-    //private final static String HUB_URL = "http://172.22.0.2:5555/wd/hub";
-    private final static String HUB_URL = "http://172.22.0.2:5555/wd/hub";
+    private final static String HUB_URL = "http://172.22.0.2:4444/wd/hub";
 
     public static WebDriver getDriver() {
         return driver;
