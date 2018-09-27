@@ -1,5 +1,6 @@
 package com.combotag.yositesting2;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,8 +24,8 @@ public class FunctionalTest {
     @BeforeTest
     public static void setUp () throws MalformedURLException {
 
-        System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
-        //  WebDriverManager.chromedriver().setup();
+     //   System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
+          WebDriverManager.chromedriver().setup();
      //   driver = new RemoteWebDriver(new URL(HUB_URL), new ChromeOptions());
         driver = new ChromeDriver();
 
