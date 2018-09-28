@@ -26,6 +26,9 @@ allure {
     version = '2.7.0'
     autoconfigure = true
     aspectjweaver = true
+    useSpock {
+        version = '2.0-BETA12'
+    }
 }
 
 
