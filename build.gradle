@@ -1,17 +1,17 @@
-buildscript {
+/*buildscript {
     repositories {
         jcenter()
     }
     dependencies {
         classpath "io.qameta.allure:allure-gradle:2.5"
     }
-}
+}*/
 
 plugins {
     id 'java'
 }
 
-apply plugin: 'io.qameta.allure'
+//apply plugin: 'io.qameta.allure'
 
 group 'JenkinsProject'
 version '1.0-SNAPSHOT'
@@ -22,27 +22,34 @@ repositories {
     mavenCentral()
 }
 
-allure {
+/*allure {
     version = '2.7.0'
     autoconfigure = true
     aspectjweaver = true
     useSpock {
         version = '2.0-BETA12'
     }
+}*/
+
+configurations {
+    agent
 }
-
-
 dependencies {
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
     testImplementation group: 'org.testng', name: 'testng', version: '6.14.3'
     testImplementation group: 'ru.yandex.qatools.htmlelements', name: 'htmlelements-java', version: '1.19'
-    /* testImplementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.7.0'
-     testImplementation group: 'ru.yandex.qatools.allure', name: 'allure-testng-adaptor', version: '1.5.4'
-     testImplementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.1'*/
+    // testImplementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.7.0'
+    /* testImplementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.1'*/
+    agent "org.aspectj:aspectjweaver:1.9.1"
+    testImplementation group: 'ru.yandex.qatools.allure', name: 'allure-testng-adaptor', version: '1.5.4'
+
 }
 test {
     systemProperty 'target.environment', System.getProperty('target.environment')
     useTestNG() {
         suites 'src/test/resources/testing.xml'
     }
+}
+test.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
 }
