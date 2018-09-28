@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
-
     @FindBy(xpath = "//div[contains(text(),'Advertisers')][contains(@class,'SearchTree')]/../../../..")
     private WebElement treeAdviserWidgetContainer;
 
@@ -36,7 +35,7 @@ public class HomePage extends BasePage {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathLocator)));
     }
 
-@Step("Click tab button")
+    @Step("Click tab button")
     public void clickTabButton(String nameOfTab) {
         String xpathLocator = String.format("//a[contains(@href,'/%s')]/following-sibling::*/*/*[@filter]", nameOfTab);
         WebElement clickAdviserTab = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathLocator)));
@@ -48,7 +47,8 @@ public class HomePage extends BasePage {
         WebElement element = getWebElement(name);
         return appearanceOfElementPattern(element);
     }
-@Step("Click chevron of element")
+
+    @Step("Click chevron of element")
     public void clickChevronOfElement(String name) {
         WebElement chevronOfElement = getWebElement(name).findElement(By.xpath(".//span/i"));
         chevronOfElement.click();
