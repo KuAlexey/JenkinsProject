@@ -17,7 +17,7 @@ dependencies {
     testImplementation group: 'ru.yandex.qatools.htmlelements', name: 'htmlelements-java', version: '1.19'
 }
 test {
-    systemProperty 'target.environment', System.getProperty('target.environment')
+  //  systemProperty 'target.environment', System.getProperty('target.environment')
     useTestNG() {
         suites 'src/test/resources/testing.xml'
     }
