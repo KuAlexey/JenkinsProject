@@ -2,6 +2,7 @@ package com.combotag.yositesting2;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -35,9 +36,8 @@ public class BaseTest {
             driver.setFileDetector(new LocalFileDetector());
             driverPool.set(driver);
         } else {
-            System.setProperty("webdriver.chrome.remoteWebDriver",
-                    new File(BaseTest.class.getResource("/chromedriver.exe").getFile())
-                            .getPath());
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+            driverPool.set(new ChromeDriver());
         }
         return driverPool.get();
     }
@@ -49,7 +49,7 @@ public class BaseTest {
     @BeforeTest(description = "Configure something before test", alwaysRun = true)
     public void setUp() {
         WebDriver driver = initDriver();
-        String env = System.getProperty("remote");
+        String env = System.getProperty("target.environment");
         if (env != null && env.equals("remote")) {
             driver.manage().window().setSize(new Dimension(1920, 1080));
         } else {
