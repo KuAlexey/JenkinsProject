@@ -1,10 +1,8 @@
 package com.combotag.yositesting2;
 
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
@@ -15,16 +13,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BaseTest {
-    private RemoteWebDriver remoteWebDriver;
+    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+
     private final static String APP_URL = "https://yositesting2.combotag.com/";
     //private final static String HUB_URL = "http://172.23.0.2:4444/wd/hub";
     private final static String HUB_URL = "http://10.4.0.109:4444/wd/hub";
 
     private WebDriver initDriver() {
-        String env = System.getProperty("remote");
+        String env = System.getProperty("target.environment");
         ChromeOptions options = new ChromeOptions();
-        options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
-                UnexpectedAlertBehaviour.ACCEPT);
+        /*options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
+                UnexpectedAlertBehaviour.ACCEPT);*/
         if (env != null && env.equals("remote")) {
             URL host = null;
             try {
@@ -32,18 +31,19 @@ public class BaseTest {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            remoteWebDriver = new RemoteWebDriver(host, options);
-            remoteWebDriver.setFileDetector(new LocalFileDetector());
+            RemoteWebDriver driver = new RemoteWebDriver(host, options);
+            driver.setFileDetector(new LocalFileDetector());
+            driverPool.set(driver);
         } else {
             System.setProperty("webdriver.chrome.remoteWebDriver",
                     new File(BaseTest.class.getResource("/chromedriver.exe").getFile())
                             .getPath());
         }
-        return remoteWebDriver;
+        return driverPool.get();
     }
 
-    public RemoteWebDriver getRemoteWebDriver() {
-        return remoteWebDriver;
+    public static WebDriver getDriver() {
+        return driverPool.get();
     }
 
     @BeforeTest(description = "Configure something before test", alwaysRun = true)
@@ -58,8 +58,8 @@ public class BaseTest {
         driver.get(APP_URL);
     }
 
-        @AfterTest(alwaysRun = true)
-        public void tearDown () {
-            getRemoteWebDriver().quit();
-        }
+    @AfterTest(alwaysRun = true)
+    public void tearDown() {
+        driverPool.get().quit();
     }
+}
