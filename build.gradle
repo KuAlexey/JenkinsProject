@@ -35,11 +35,11 @@ configurations {
     agent
 }
 dependencies {
+    agent "org.aspectj:aspectjweaver:1.9.1"
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
     testImplementation group: 'org.testng', name: 'testng', version: '6.14.3'
     testImplementation group: 'ru.yandex.qatools.htmlelements', name: 'htmlelements-java', version: '1.19'
     testImplementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.7.0'
-    agent "org.aspectj:aspectjweaver:1.9.1"
     testImplementation group: 'ru.yandex.qatools.allure', name: 'allure-testng-adaptor', version: '1.5.4'
 
 }
@@ -49,6 +49,8 @@ test {
         suites 'src/test/resources/testing.xml'
     }
 }
-test.doFirst {
-    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+tasks.withType(Test) {
+    doFirst() {
+        jvmArgs "-javaagent:${configurations.agent.singleFile}"
+    }
 }
