@@ -1,5 +1,17 @@
+
+
+/*buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.3"
+    }
+}*/
+
 plugins {
     id 'java'
+  //  id 'io.qameta.allure'
 }
 
 group 'JenkinsProject'
@@ -10,11 +22,22 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+/*
+
+allure {
+    version = '2.2.1'
+    autoconfigure = true
+    aspectjweaver = true
+    allureJavaVersion = LATEST_VERSION
+}
+*/
 
 dependencies {
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
     testImplementation group: 'org.testng', name: 'testng', version: '6.14.3'
     testImplementation group: 'ru.yandex.qatools.htmlelements', name: 'htmlelements-java', version: '1.19'
+    testImplementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.7.0'
+
 }
 test {
     systemProperty 'target.environment', System.getProperty('target.environment')

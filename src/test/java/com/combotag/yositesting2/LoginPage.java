@@ -1,5 +1,6 @@
 package com.combotag.yositesting2;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,10 +18,12 @@ public class LoginPage extends BasePage {
         loginOrPassElement.sendKeys(textToInput);
     }
 
+    @Step("Write login and password")
     public void setTextToInput(String userOrPassword, String setText) {
         setInputManage(userOrPassword, setText);
     }
 
+    @Step("Click sign in button")
     public void clickForSignIn() {
         signInButton.click();
     }
