@@ -11,7 +11,8 @@ public abstract class BasePage {
     protected WebDriverWait wait;
 
     public BasePage() {
-        driver = BaseTest.getDriver();
+        BaseTest baseTest = new BaseTest();
+        driver = baseTest.getRemoteWebDriver();
         HtmlElementLocatorFactory factory = new HtmlElementLocatorFactory(driver);
         PageFactory.initElements(new HtmlElementDecorator(factory), this);
         wait = new WebDriverWait(driver, 30);
