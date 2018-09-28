@@ -37,7 +37,7 @@ public class BaseTest {
             driverPool.set(driver);
         } else {
             System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-            driverPool.set(new ChromeDriver());
+            driverPool.set(new ChromeDriver(options));
         }
         return driverPool.get();
     }
