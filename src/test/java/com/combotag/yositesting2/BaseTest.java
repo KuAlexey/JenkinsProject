@@ -1,6 +1,5 @@
 package com.combotag.yositesting2;
 
-import io.qameta.allure.Attachment;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,10 +8,12 @@ import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@Listeners({ScreenshotListener.class})
 public class BaseTest {
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
@@ -55,6 +56,7 @@ public class BaseTest {
         }
         driver.get(APP_URL);
     }
+
     @AfterTest(alwaysRun = true)
     public void tearDown() {
         driverPool.get().quit();
