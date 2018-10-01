@@ -23,8 +23,6 @@ public class BaseTest {
     private WebDriver initDriver() {
         String env = System.getProperty("target.environment");
         ChromeOptions options = new ChromeOptions();
-        /*options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
-                UnexpectedAlertBehaviour.ACCEPT);*/
         if (env != null && env.equals("remote")) {
             URL host = null;
             try {

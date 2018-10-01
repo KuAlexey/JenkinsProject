@@ -1,6 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="suite1">
+    <listeners>
+        <listener class-name="com.combotag.yositesting2.ScreenshotListener" />
+    </listeners>
     <test name="mainTest">
         <classes>
             <class name="com.combotag.yositesting2.TestMain"/>
