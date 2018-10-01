@@ -1,17 +1,6 @@
-/*buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "io.qameta.allure:allure-gradle:2.5"
-    }
-}*/
-
 plugins {
     id 'java'
 }
-
-//apply plugin: 'io.qameta.allure'
 
 group 'JenkinsProject'
 version '1.0-SNAPSHOT'
@@ -21,15 +10,6 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-
-/*allure {
-    version = '2.7.0'
-    autoconfigure = true
-    aspectjweaver = true
-    useSpock {
-        version = '2.0-BETA12'
-    }
-}*/
 
 configurations {
     agent
