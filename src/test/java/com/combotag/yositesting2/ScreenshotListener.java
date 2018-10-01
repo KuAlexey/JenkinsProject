@@ -1,12 +1,11 @@
 package com.combotag.yositesting2;
 
 
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
-import ru.yandex.qatools.allure.annotations.Attachment;
 
 public class ScreenshotListener extends TestListenerAdapter {
 
@@ -25,9 +24,8 @@ public class ScreenshotListener extends TestListenerAdapter {
         saveScreenshot();
     }
 
-    @Attachment(value = "Page screenshot", type = "image/png")
+    @Attachment(type = "image/png")
     private byte[] saveScreenshot() {
-        WebDriver driver = BaseTest.getDriver();
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
