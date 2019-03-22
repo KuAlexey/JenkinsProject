@@ -39,16 +39,16 @@ public final class BrowserProxySniffing {
 
 
     public HashMap<String, Object> getProxyCapabilities() {
-        // Proxy seleniumProxy = ClientUtil.createSeleniumProxy(browserMobProxy);
-        Proxy seleniumProxy = new Proxy();
+         Proxy seleniumProxy = ClientUtil.createSeleniumProxy(browserMobProxy);
+        //Proxy seleniumProxy = new Proxy();
         String hostIp;
         int port;
         // try {
 
-        port = 9090;
+       /* port = 9090;
         hostIp = "172.19.0.0";
         seleniumProxy.setHttpProxy(hostIp + ":" + port)
-                .setSslProxy(hostIp + ":" + port);
+                .setSslProxy(hostIp + ":" + port);*/
         System.out.println(seleniumProxy.getHttpProxy());
     /*} catch (UnknownHostException e) {
       e.printStackTrace();
