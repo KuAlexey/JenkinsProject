@@ -30,7 +30,7 @@ public abstract class BaseTest {
             URL host = null;
             try {
                // host = new URL("http://10.4.0.72:4444/wd/hub");
-                  host = new URL("http://172.19.0.0:4444/wd/hub");
+                  host = new URL("http://localhost:4444/wd/hub");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
