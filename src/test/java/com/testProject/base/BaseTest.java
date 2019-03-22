@@ -1,8 +1,7 @@
 package com.testProject.base;
 
 
-import com.testProject.ScreenshotListener;
-import org.openqa.selenium.Dimension;
+import com.utils.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -30,7 +29,7 @@ public abstract class BaseTest {
         if (env != null && env.equals("remote")) {
             URL host = null;
             try {
-                host = new URL("http://172.18.0.2:4444/wd/hub");
+                host = new URL("http://localhost:4444/wd/hub");
                 //  host = new URL("http://172.17.0.3:4444/wd/hub");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
