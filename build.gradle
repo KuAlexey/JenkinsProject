@@ -1,14 +1,28 @@
-plugins {
-    id 'java'
-}
-
 group 'JenkinsProject'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+defaultTasks 'clean', 'test'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.7.0"
+    }
+}
 
 repositories {
     mavenCentral()
+}
+
+allure {
+    autoconfigure = true
+    aspectjweaver = true
+    version = "2.7.0"
+    aspectjVersion = "1.8.11"
 }
 
 configurations {
@@ -29,11 +43,15 @@ test {
         suites 'src/test/resources/testing.xml'
     }
 }
+
 tasks.withType(Test) {
-    doFirst() {
-        jvmArgs "-javaagent:${configurations.agent.singleFile}"
-    }
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+    testLogging.showStandardStreams = true
+    systemProperty 'target.environment', System.getProperty('target.environment')
+    systemProperty 'home.page.url', System.getProperty('home.page.url')
+    systemProperty 'allure.results.directory', 'build/allure-results'
 }
+
 
 task generateAllure(type: Exec) {
     workingDir "$projectDir/allure/bin"

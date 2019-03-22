@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 @Listeners({ScreenshotListener.class})
-public abstract  class BaseTest {
+public abstract class BaseTest {
 
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
     private HashMap<String, Object> capabilities = new HashMap<>();
@@ -30,7 +30,7 @@ public abstract  class BaseTest {
         if (env != null && env.equals("remote")) {
             URL host = null;
             try {
-                host = new URL("http://localhost:4444/wd/hub");
+                host = new URL("http://172.18.0.2:4444/wd/hub");
                 //  host = new URL("http://172.17.0.3:4444/wd/hub");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
