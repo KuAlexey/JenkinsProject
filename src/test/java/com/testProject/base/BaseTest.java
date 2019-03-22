@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 @Listeners({ScreenshotListener.class})
-public class BaseTest {
+public abstract  class BaseTest {
 
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
     private HashMap<String, Object> capabilities = new HashMap<>();
