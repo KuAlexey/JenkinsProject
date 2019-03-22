@@ -1,4 +1,11 @@
 .gradle/
-.idea/
-out/
+.idea/*
+!.idea/codeStyles/
+allure-report/
 build/
+out/
+target/
+/*.iml
+/*.log
+**/pages/*.html
+**/har/*.har
