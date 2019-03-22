@@ -34,3 +34,16 @@ tasks.withType(Test) {
         jvmArgs "-javaagent:${configurations.agent.singleFile}"
     }
 }
+
+task generateAllure(type: Exec) {
+    workingDir "$projectDir/allure/bin"
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        commandLine 'cmd', '/c', 'allure.bat', 'generate', '-c', '../../build/allure-results'
+    } else {
+        commandLine 'bash', '-c', 'allure', 'generate', '-c', "$projectDir/build/allure-results"
+    }
+}
+
+if (System.getProperty('target.environment') == 'local') {
+    tasks.withType(Test)*.finalizedBy generateAllure
+}
