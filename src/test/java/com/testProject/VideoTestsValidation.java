@@ -52,7 +52,7 @@ public class VideoTestsValidation extends BaseTest {
     @BeforeSuite(alwaysRun = true)
     public void initCapabilities() {
 
-        sniffing.startProxyServer("172.19.0.0");
+        sniffing.startProxyServer("172.19.0.1");
         HashMap<String, Object> capabilities = sniffing.getProxyCapabilities();
         setCapabilities(capabilities);
         browserMobProxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT);
