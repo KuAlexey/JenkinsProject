@@ -30,7 +30,7 @@ public class BaseTest {
         if (env != null && env.equals("remote")) {
             URL host = null;
             try {
-                host = new URL("http://172.31.15.102:4444/wd/hub");
+                host = new URL("http://localhost:4444/wd/hub");
                 //  host = new URL("http://172.17.0.3:4444/wd/hub");
             } catch (MalformedURLException e) {
                 e.printStackTrace();

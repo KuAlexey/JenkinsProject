@@ -6,7 +6,7 @@
     </listeners>-->
     <test name="mainTest">
         <classes>
-            <class name="com.combotag.yositesting2.TestMain"/>
+            <class name="com.testProject.VideoTestsValidation" />
         </classes>
     </test>
 </suite>
