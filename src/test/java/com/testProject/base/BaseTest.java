@@ -36,6 +36,8 @@ public abstract class BaseTest {
                 e.printStackTrace();
             }
             RemoteWebDriver driver = new RemoteWebDriver(host, newOptions);
+            System.setProperty("webdriver.chrome.driver",
+                    "D:\\Project\\oldshiet\\JenkinsProject\\src\\test\\resources\\chromedriver.exe");
             driver.setFileDetector(new LocalFileDetector());
             driverPool.set(driver);
         } else {

@@ -124,9 +124,8 @@ public class VideoTestsValidation extends BaseTest {
     public void clean() {
         clearCapabilities();
         //stopBrowsermobProxyProcess();
-        browserMobProxy.stop();
         if (browserMobProxy.isStarted()) {
-            browserMobProxy.abort();
+            browserMobProxy.stop();
         }
     }
 }
