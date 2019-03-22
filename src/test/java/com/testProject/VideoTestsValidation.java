@@ -49,7 +49,7 @@ public class VideoTestsValidation extends BaseTest {
         return outputList.iterator();
     }
 
-    @BeforeSuite(alwaysRun = true)
+  /*  @BeforeSuite(alwaysRun = true)
     public void initCapabilities() {
 
         sniffing.startProxyServerInLocal();
@@ -58,7 +58,7 @@ public class VideoTestsValidation extends BaseTest {
         browserMobProxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT);
         browserMobProxy.newHar("video.validation");
         //   runBrowserProxy();
-    }
+    }*/
 
     private void stopBrowsermobProxyProcess() {
         Utils.delay(5, 10);
